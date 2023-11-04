@@ -468,6 +468,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   smoothTime: 0.4
+  targetQuaternion: {x: 0, y: 0, z: 0, w: 0}
+  InstanceToFollow: {fileID: 1916317604}
+  cameraSpeed: 2
 --- !u!4 &989534290
 Transform:
   m_ObjectHideFlags: 0
@@ -598,14 +601,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1916317609}
+  - component: {fileID: 1916317611}
   - component: {fileID: 1916317608}
   - component: {fileID: 1916317607}
   - component: {fileID: 1916317606}
   - component: {fileID: 1916317605}
-  - component: {fileID: 1916317610}
+  - component: {fileID: 1916317612}
+  - component: {fileID: 1916317613}
   m_Layer: 0
   m_Name: Plane (1)
-  m_TagString: Untagged
+  m_TagString: LookToCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -718,7 +723,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!54 &1916317610
+--- !u!114 &1916317611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916317604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f357fb32d6fb0459ed3585d656164d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1916317612
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -741,10 +758,24 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1916317613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916317604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a9c42a9b2fa794395978174c1c701e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 989534290}
+  Speed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
