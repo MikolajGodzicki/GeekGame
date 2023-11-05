@@ -28,16 +28,19 @@ public class Example : MonoBehaviour
 
         if(targetRotation == 0f){
             Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }else if(targetRotation == -90f || targetRotation == 270f){
+            Move(move);
+        }
+        else if(targetRotation == -90f || targetRotation == 270f){
             Vector3 move = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }else if(targetRotation == -180f || targetRotation == 180f){
+            Move(move);
+        }
+        else if(targetRotation == -180f || targetRotation == 180f){
             Vector3 move = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }else if(targetRotation == -270f || targetRotation == 90f){
+            Move(move);
+        }
+        else if(targetRotation == -270f || targetRotation == 90f){
             Vector3 move = new Vector3(Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal"));
-            controller.Move(move * Time.deltaTime * playerSpeed);
+            Move(move);
         }
 
         /*if (move != Vector3.zero)
@@ -54,4 +57,6 @@ public class Example : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+
+    private void Move(Vector3 move) => controller.Move(move * Time.deltaTime * playerSpeed);
 }

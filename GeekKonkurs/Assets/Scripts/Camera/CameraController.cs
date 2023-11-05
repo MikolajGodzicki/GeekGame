@@ -54,11 +54,9 @@ public class CameraController : MonoBehaviour
         }
 
         direction = directions[targetRotation];
-        //Debug.Log(direction);
 
         targetQuaternion = Quaternion.Euler(45, targetRotation, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetQuaternion, smoothTime * rotationSpeed * Time.deltaTime);
-
 
         float Interpolation = cameraSpeed * Time.deltaTime;
 
