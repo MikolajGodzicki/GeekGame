@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     }
 
     IEnumerator ToCamera(){
-          yield return new WaitForSeconds(1);
+          yield return new WaitForSeconds(0.4f);
           lookToCamera.StartRotating();
     }
 
