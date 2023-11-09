@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,6 +13,27 @@ public class CameraController : MonoBehaviour
     public Quaternion targetQuaternion;
     public GameObject InstanceToFollow;
     public float cameraSpeed = 8.0f;
+
+    public void CameraRotateLeft()
+    {
+        Debug.Log("LEft");
+        targetRotation += 90f;
+        if (targetRotation >= 360)
+        {
+            targetRotation = 0;
+        }
+        StartCoroutine(ToCamera());
+    }
+    public void CameraRotateRight()
+    {
+        Debug.Log("right");
+        targetRotation -= 90f;
+        if (targetRotation <= -360)
+        {
+            targetRotation = 0;
+        }
+        StartCoroutine(ToCamera());
+    }
 
     private Dictionary<float, Direction> directions = new Dictionary<float, Direction>() {
         { 0f, Direction.Forward },

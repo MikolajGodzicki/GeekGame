@@ -11,7 +11,7 @@ public class Example : MonoBehaviour
     //private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private float targetRotation;
-
+    
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
