@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""b2bea180-591c-4393-b48d-b82a24dc79eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -51,7 +60,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""47c42c85-116a-4bc1-be56-be0b3ad53f6a"",
                     ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41290998-33db-4415-a044-3944c1dd54c2"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press(pressPoint=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CameraRotateLeft"",
@@ -68,6 +88,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CameraRotateRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a06ffb99-cd84-4134-8161-0acb0c7989ba"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4ef83fac-1f61-4e6a-a07c-8d4b15a7e9f6"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""0c778fe6-0203-4f1a-a255-0d9bb6e0bac9"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -78,6 +131,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_CameraRotateLeft = m_Gameplay.FindAction("CameraRotateLeft", throwIfNotFound: true);
         m_Gameplay_CameraRotateRight = m_Gameplay.FindAction("CameraRotateRight", throwIfNotFound: true);
+        m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +195,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_CameraRotateLeft;
     private readonly InputAction m_Gameplay_CameraRotateRight;
+    private readonly InputAction m_Gameplay_Movement;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @CameraRotateLeft => m_Wrapper.m_Gameplay_CameraRotateLeft;
         public InputAction @CameraRotateRight => m_Wrapper.m_Gameplay_CameraRotateRight;
+        public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +218,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraRotateRight.started += instance.OnCameraRotateRight;
             @CameraRotateRight.performed += instance.OnCameraRotateRight;
             @CameraRotateRight.canceled += instance.OnCameraRotateRight;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -172,6 +231,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraRotateRight.started -= instance.OnCameraRotateRight;
             @CameraRotateRight.performed -= instance.OnCameraRotateRight;
             @CameraRotateRight.canceled -= instance.OnCameraRotateRight;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -193,5 +255,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnCameraRotateLeft(InputAction.CallbackContext context);
         void OnCameraRotateRight(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

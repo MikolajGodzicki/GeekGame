@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Example : MonoBehaviour
 {
@@ -11,37 +12,23 @@ public class Example : MonoBehaviour
     //private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private float targetRotation;
-    
+    private Vector2 _playerMovementInput;
+
     private void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
+        Moveplayer();
         targetRotation = GameObject.Find("CameraController").GetComponent<CameraController>().targetRotation;
-        groundedPlayer = controller.isGrounded;
+        /*groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
-
-        if(targetRotation == 0f){
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            Move(move);
-        }
-        else if(targetRotation == -90f || targetRotation == 270f){
-            Vector3 move = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
-            Move(move);
-        }
-        else if(targetRotation == -180f || targetRotation == 180f){
-            Vector3 move = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
-            Move(move);
-        }
-        else if(targetRotation == -270f || targetRotation == 90f){
-            Vector3 move = new Vector3(Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal"));
-            Move(move);
-        }
+        /*
 
         /*if (move != Vector3.zero)
         {
@@ -55,8 +42,36 @@ public class Example : MonoBehaviour
         }*/
 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        //controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    private void Move(Vector3 move) => controller.Move(move * Time.deltaTime * playerSpeed);
+    void Moveplayer()
+    {
+        if (targetRotation == 0f)
+        {
+            Vector3 move = new Vector3(_playerMovementInput.x, 0.0f, _playerMovementInput.y);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        else if (targetRotation == -90f || targetRotation == 270f)
+        {
+            Vector3 move = new Vector3(-_playerMovementInput.y, 0.0f, _playerMovementInput.x);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        else if (targetRotation == -180f || targetRotation == 180f)
+        {
+            Vector3 move = new Vector3(-_playerMovementInput.x, 0.0f, -_playerMovementInput.y);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        else if (targetRotation == -270f || targetRotation == 90f)
+        {
+            Vector3 move = new Vector3(_playerMovementInput.y, 0.0f, -_playerMovementInput.x);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        } 
+    }
+
+    void OnMove(InputValue iv)
+    {
+        //Debug.Log("Move");
+        _playerMovementInput = iv.Get<Vector2>();
+    }
 }

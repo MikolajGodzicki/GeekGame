@@ -13,27 +13,9 @@ public class CameraController : MonoBehaviour
     public Quaternion targetQuaternion;
     public GameObject InstanceToFollow;
     public float cameraSpeed = 8.0f;
-
-    public void CameraRotateLeft()
-    {
-        Debug.Log("LEft");
-        targetRotation += 90f;
-        if (targetRotation >= 360)
-        {
-            targetRotation = 0;
-        }
-        StartCoroutine(ToCamera());
-    }
-    public void CameraRotateRight()
-    {
-        Debug.Log("right");
-        targetRotation -= 90f;
-        if (targetRotation <= -360)
-        {
-            targetRotation = 0;
-        }
-        StartCoroutine(ToCamera());
-    }
+    private Vector2 _cameraRotateInput;
+    public float WaitTime = 1.2f;
+    private float currentWaitTime;
 
     private Dictionary<float, Direction> directions = new Dictionary<float, Direction>() {
         { 0f, Direction.Forward },
@@ -52,6 +34,7 @@ public class CameraController : MonoBehaviour
         targetQuaternion = initialRotation;
         lookToCamera = GameObject.FindGameObjectWithTag("LookToCamera").GetComponent<LookToCamera>();
         StartCoroutine(ToCamera());
+        currentWaitTime = WaitTime;
     }
 
     IEnumerator ToCamera(){
@@ -59,22 +42,41 @@ public class CameraController : MonoBehaviour
           lookToCamera.StartRotating();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow)) {
-            targetRotation += 90f;
-            if (targetRotation >= 360) {
-                targetRotation = 0;
+    void Rotation()
+    {
+        if (currentWaitTime < 0)
+        {
+            if (_cameraRotateInput.x == 1)
+            {//Q
+                //Debug.Log("Left");
+                Debug.Log(_cameraRotateInput.y);
+                currentWaitTime = WaitTime;
+                targetRotation -= 90f;
+                if (targetRotation <= -360)
+                {
+                    targetRotation = 0;
+                }
+                StartCoroutine(ToCamera());
             }
-            StartCoroutine(ToCamera());
-        }
-        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow)) {
-            targetRotation -= 90f;
-            if (targetRotation <= -360) {
-                targetRotation = 0;
+            else if (_cameraRotateInput.y == 1)//E
+            {
+                //Debug.Log("Right");
+                Debug.Log(_cameraRotateInput.x);
+                currentWaitTime = WaitTime;
+                targetRotation += 90f;
+                if (targetRotation >= 360)
+                {
+                    targetRotation = 0;
+                }
+                StartCoroutine(ToCamera());
             }
-            StartCoroutine(ToCamera());
         }
+        
+    }
 
+    private void Update() {
+        Rotation();
+        currentWaitTime -= Time.deltaTime;
         direction = directions[targetRotation];
 
         targetQuaternion = Quaternion.Euler(45, targetRotation, 0);
@@ -104,6 +106,12 @@ public class CameraController : MonoBehaviour
 
         transform.position = position;
         
+    }
+
+    void OnRotate(InputValue iv)
+    {
+        //Debug.Log("Rotate");
+        _cameraRotateInput = iv.Get<Vector2>();
     }
 }
 
