@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd3d01eddcedb04c8e9bd76ec8c3819, type: 3}
+  m_Name: Camp
+  m_EditorClassIdentifier: 
+  m_nodeData:
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.NoiseNode
+    jsonData: '{"m_groupId":"","m_id":"7be95146-f2dd-429f-9025-42bca47ac13a","m_visualState":{"m_position":{"x":-141.0,"y":-381.0},"m_collapsed":false},"m_shouldSplitExecution":false,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":2.0,"m_resolutionAbsolute":1024,"m_offset":{"x":-1000.0,"y":1000.0},"m_scale":600.0,"m_lacunarity":2.0,"m_persistence":0.34200000762939455,"m_layerCount":4,"m_mode":1,"m_seed":500,"m_warpMode":1,"m_warpAngleMin":-360.0,"m_warpAngleMax":360.0,"m_warpIntensity":1.0,"m_remapCurve":{"serializedVersion":"2","m_Curve":[{"serializedVersion":"3","time":0.0,"value":0.304229736328125,"inSlope":0.584930419921875,"outSlope":0.584930419921875,"tangentMode":34,"weightedMode":0,"inWeight":0.0,"outWeight":0.3333333432674408},{"serializedVersion":"3","time":1.0,"value":0.88916015625,"inSlope":0.584930419921875,"outSlope":0.584930419921875,"tangentMode":34,"weightedMode":0,"inWeight":0.3333333432674408,"outWeight":0.0}],"m_PreInfinity":2,"m_PostInfinity":2,"m_RotationOrder":4}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.HydraulicErosionNode
+    jsonData: '{"m_groupId":"","m_id":"b1216564-78d8-4c30-997e-350ace46124e","m_visualState":{"m_position":{"x":49.0,"y":-381.0},"m_collapsed":false},"m_shouldSplitExecution":true,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":0.10000000149011612,"m_resolutionAbsolute":1024,"m_detailLevel":0.10000000149011612,"m_iterationCount":60,"m_iterationPerFrame":1,"m_highQualityMode":true,"m_waterSourceAmount":1.0,"m_waterSourceMultiplier":2.0,"m_flowRate":1.0,"m_flowMultiplier":2.0,"m_sedimentCapacity":10.0,"m_sedimentCapacityMultiplier":2.0,"m_erosionRate":10.0,"m_erosionMultiplier":2.0,"m_depositionRate":1.0,"m_depositionMultiplier":2.0,"m_depositionSlopeFactor":1.0,"m_evaporationRate":1.0,"m_evaporationMultiplier":2.0,"m_bedRockDepth":0.0,"m_sharpness":1.0,"m_heightScale":1.0,"m_detailHeightScale":1.0,"m_erosionBoost":1.0,"m_depositionBoost":1.0}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.HeightOutputNode
+    jsonData: '{"m_groupId":"","m_id":"7dc2d9ad-73c6-4a1c-8966-c3d4972c1c5d","m_visualState":{"m_position":{"x":305.0,"y":-381.0},"m_collapsed":false},"m_shouldSplitExecution":true,"m_isBypassed":false}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.RemapNode
+    jsonData: '{"m_groupId":"","m_id":"8d50bc4a-ba53-4df3-a055-f6dd80aecc00","m_visualState":{"m_position":{"x":305.0,"y":-306.0},"m_collapsed":false},"m_shouldSplitExecution":false,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":1.0,"m_resolutionAbsolute":1024,"m_min":0.0,"m_max":1.0}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.WeightBlendNode
+    jsonData: '{"m_groupId":"","m_id":"1cc06bc6-d28d-4179-8074-9a449b28e4f6","m_visualState":{"m_position":{"x":489.0,"y":-330.0},"m_collapsed":false},"m_shouldSplitExecution":false,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":1.0,"m_resolutionAbsolute":1024,"m_inputSlots":[{"m_id":0,"m_type":0,"m_name":"Layer
+      0"},{"m_id":1,"m_type":0,"m_name":"Layer 1"}],"m_outputSlots":[{"m_id":100,"m_type":1,"m_name":"Layer
+      0"},{"m_id":101,"m_type":1,"m_name":"Layer 1"}],"m_layerCount":2}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.TextureOutputNode
+    jsonData: '{"m_groupId":"","m_id":"e69d8e2f-035d-4173-ae0d-98e6723d9967","m_visualState":{"m_position":{"x":672.0,"y":-266.0},"m_collapsed":false},"m_shouldSplitExecution":false,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":1.0,"m_resolutionAbsolute":1024,"m_order":0}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.TextureOutputNode
+    jsonData: '{"m_groupId":"","m_id":"cdf89541-3fd3-48c0-a6b1-23963716e3a3","m_visualState":{"m_position":{"x":702.0,"y":-476.0},"m_collapsed":false},"m_shouldSplitExecution":false,"m_isBypassed":false,"m_resolutionOverride":1,"m_resolutionMultiplier":0.10000000149011612,"m_resolutionAbsolute":1024,"m_order":0}'
+  m_edgeData:
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"6b558f0a-eed5-42bd-a3c5-665d511edadf","m_outputSlot":{"m_nodeId":"7be95146-f2dd-429f-9025-42bca47ac13a","m_slotId":100},"m_inputSlot":{"m_nodeId":"b1216564-78d8-4c30-997e-350ace46124e","m_slotId":0}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"9c0152f7-793e-4583-9d66-1db971778d20","m_outputSlot":{"m_nodeId":"b1216564-78d8-4c30-997e-350ace46124e","m_slotId":100},"m_inputSlot":{"m_nodeId":"7dc2d9ad-73c6-4a1c-8966-c3d4972c1c5d","m_slotId":0}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"c2ecbd48-d60e-4508-8c36-e95eb8a98d03","m_outputSlot":{"m_nodeId":"b1216564-78d8-4c30-997e-350ace46124e","m_slotId":101},"m_inputSlot":{"m_nodeId":"8d50bc4a-ba53-4df3-a055-f6dd80aecc00","m_slotId":0}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"4104eded-be83-4d81-9fbe-f4c49f3de7f4","m_outputSlot":{"m_nodeId":"8d50bc4a-ba53-4df3-a055-f6dd80aecc00","m_slotId":100},"m_inputSlot":{"m_nodeId":"1cc06bc6-d28d-4179-8074-9a449b28e4f6","m_slotId":1}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"574b7263-5d1f-4507-b5bb-00efbe59434d","m_outputSlot":{"m_nodeId":"1cc06bc6-d28d-4179-8074-9a449b28e4f6","m_slotId":100},"m_inputSlot":{"m_nodeId":"cdf89541-3fd3-48c0-a6b1-23963716e3a3","m_slotId":0}}'
+  - typeInfo:
+      fullName: Pinwheel.Vista.Graph.Edge
+    jsonData: '{"m_id":"e277f861-ff5a-497f-b15e-bb0753f8c796","m_outputSlot":{"m_nodeId":"1cc06bc6-d28d-4179-8074-9a449b28e4f6","m_slotId":101},"m_inputSlot":{"m_nodeId":"e69d8e2f-035d-4173-ae0d-98e6723d9967","m_slotId":0}}'
+  m_groupData: []
+  m_stickyNoteData: []
+  m_stickyImageData: []
+  m_objectReferences:
+  - m_key: e69d8e2f-035d-4173-ae0d-98e6723d9967.m_terrainLayer
+    m_target: {fileID: 8574412962073106934, guid: c997c17aa360cb749a27932fe3bdfcce, type: 2}
+  - m_key: cdf89541-3fd3-48c0-a6b1-23963716e3a3.m_terrainLayer
+    m_target: {fileID: 8574412962073106934, guid: bd1fcb10d2c5b5d4ba6e01a34e4735be, type: 2}
+  m_exposedProperties: []
+  m_debugConfigs:
+    m_resolution: 1024
+    m_worldBounds:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1000
+      height: 1000
+    m_terrainHeight: 600
+    m_seed: 1234
+    m_shouldOutputTempHeight: 0
+  m_allowSplitExecution: 1
